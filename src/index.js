@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import App from './containers/App'
+import App from './App'
 
-import './styles/style.scss'
+import './assets/styles/style.scss'
 
 ReactDOM.render(<App />, document.getElementById('app'))
