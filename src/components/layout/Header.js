@@ -12,7 +12,9 @@ export const Header = ({ config }) => {
     <header css={headerStyle}>
       <div className="container">
         <h1 className="logo">
-          <a href="/">{config.sitename ? config.sitename : 'Loading'}</a>
+          <a href="/react-landing-page-template/">
+            {config.sitename ? config.sitename : 'Loading'}
+          </a>
         </h1>
         <nav id="gnav" css={gnav} className={isOpen ? 'is-open' : ''}>
           <ul>
