@@ -1,6 +1,7 @@
 # react-landing-page-template
 This is just a sample with React. I create this for learning React.
 
+* The data can be modified by changing the data.js file
 
 ## Demo
 
@@ -36,3 +37,5 @@ npm run start
 ## References
 
 [React-Landing-Page-Template](https://github.com/issaafalkattan/React-Landing-Page-Template)
+
+Photo by [@fakurian](https://unsplash.com/@fakurian)

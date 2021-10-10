@@ -2,17 +2,16 @@ import React from 'react'
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react'
 
-export const Service = ({ config }) => {
-  const { id, title, text, service } = config.service
-    ? config.service
+export const Testimonials = ({ config }) => {
+  const { id, title, items, text } = config.testimonials
+    ? config.testimonials
     : 'Loading'
 
   return (
-    <section id={id} className="section" css={serviceStyle}>
+    <section id={id} className="section" css={testimonialsStyle}>
       <div className="container">
         <h3 className="section_title">{title}</h3>
-        <p className="text">{text}</p>
-        <ul className="list">{service && <Item items={service} />}</ul>
+        <ul className="list">{items && <Item items={items} />}</ul>
       </div>
     </section>
   )
@@ -20,59 +19,40 @@ export const Service = ({ config }) => {
 
 const Item = ({ items }) => {
   const listItem = items.map((item, i) => (
-    <li key={item.name} className="list_item">
-      <figure className="list_img">
-        <img src={item.img} alt="" />
+    <li key={item + i} className="list_item">
+      <figure className="list_thumb">
+        <img src={item.img} alt={item.name} />
       </figure>
-      <p className="list_title">{item.name}</p>
       <p className="list_text">{item.text}</p>
+      <p className="list_title">{item.name}</p>
     </li>
   ))
   return listItem
 }
 
-const serviceStyle = css`
-  .container {
-    @media screen and (min-width: 600px) {
-    }
-  }
-
-  .text {
-    margin-top: 20px;
-    font-size: 1.4rem;
-    letter-spacing: 0.05em;
-    text-align: center;
-    @media screen and (min-width: 600px) {
-      font-size: 1.5rem;
-    }
-  }
-
+const testimonialsStyle = css`
   .list {
     margin-top: 40px;
     .list_item {
-      padding: 48px 24px;
-      background-color: #fafafa;
+      padding: 24px;
+      background-color: #fff;
     }
     .list_title {
       margin-top: 20px;
       font-size: 1.6rem;
       font-weight: bold;
       letter-spacing: 0.05em;
-      line-height: 1.4;
-      text-align: center;
     }
     .list_text {
       margin-top: 16px;
-      font-size: 1.3rem;
-      line-height: 1.6;
+      font-size: 1.5rem;
+      line-height: 1.7;
       letter-spacing: 0.02em;
-      text-align: center;
     }
-    .list_img {
+    .list_thumb {
       position: relative;
       width: 80px;
       height: 80px;
-      margin: 0 auto;
       border-radius: 50%;
       overflow: hidden;
       img {
@@ -95,10 +75,6 @@ const serviceStyle = css`
       justify-content: space-between;
       .list_item {
         width: calc((100% - 80px) / 3);
-        padding: 56px 48px;
-      }
-      .list_title {
-        font-size: 1.8rem;
       }
     }
   }

@@ -43,14 +43,13 @@ const heroStyle = css`
 
   &:after {
     content: '';
-    background-color: #000;
-    opacity: 0.3;
+    background-color: #fff;
+    opacity: 0.6;
     grid-area: 1 / -1;
     z-index: 2;
   }
 
   .copy {
-    color: #fff;
     font-size: 2rem;
     font-weight: bold;
     letter-spacing: 0.1em;
@@ -62,7 +61,6 @@ const heroStyle = css`
 
   .text {
     margin: 0 auto;
-    color: #fff;
     font-size: 1.3rem;
     letter-spacing: 0.05em;
     @media screen and (min-width: 600px) {
