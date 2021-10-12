@@ -1,26 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react'
 
 export const Header = ({ config }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const handleClick = (e) => {
+    setIsOpen(!isOpen)
+  }
+
   return (
     <header css={headerStyle}>
       <div className="container">
         <h1 className="logo">
-          {config.sitename ? config.sitename : 'Loading'}
+          <a href="/react-landing-page-template/">
+            {config.sitename ? config.sitename : 'Loading'}
+          </a>
         </h1>
-        <nav id="gnav" css={gnav}>
+        <nav id="gnav" css={gnav} className={isOpen ? 'is-open' : ''}>
           <ul>
             {config.menus &&
               config.menus.map((menu) => (
                 <li key={menu.title}>
-                  <a href={menu.path}>{menu.title}</a>
+                  <a href={menu.path} onClick={handleClick}>
+                    {menu.title}
+                  </a>
                 </li>
               ))}
           </ul>
         </nav>
         <div id="hamburger" css={hamburger}>
-          <button type="button" className="icon">
+          <button
+            type="button"
+            className={isOpen ? 'icon is-active' : 'icon'}
+            onClick={handleClick}
+          >
             <span></span>
           </button>
         </div>
@@ -45,15 +58,20 @@ const headerStyle = css`
   }
 
   .logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-    letter-spacing: 0.1em;
+    a {
+      color: #222;
+      font-size: 1.8rem;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
   }
 `
 
 const gnav = css`
-  li {
-  }
   a {
     display: block;
     color: #222;
@@ -130,7 +148,6 @@ const hamburger = css`
     display: block;
     width: 100%;
     height: 100%;
-    margin: 0 auto;
 
     span {
       position: absolute;
@@ -165,6 +182,21 @@ const hamburger = css`
 
       &:after {
         margin-top: 6px;
+      }
+    }
+    &.is-active {
+      span {
+        background: transparent;
+
+        &:before {
+          margin-top: 0;
+          transform: rotate(-45deg);
+        }
+
+        &:after {
+          margin-top: 0;
+          transform: rotate(-135deg);
+        }
       }
     }
   }

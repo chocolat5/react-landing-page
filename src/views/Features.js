@@ -32,7 +32,7 @@ const featuresStyle = css`
     letter-spacing: 0.05em;
     text-align: left;
     @media screen and (min-width: 600px) {
-      width: 48%;
+      width: 58%;
       font-size: 2.4rem;
     }
   }
@@ -40,7 +40,7 @@ const featuresStyle = css`
   .img {
     margin-top: 24px;
     @media screen and (min-width: 600px) {
-      width: 48%;
+      width: 38%;
       margin-top: 0;
     }
   }
