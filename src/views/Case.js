@@ -12,10 +12,10 @@ export const Case = ({ config }) => {
       <div className="container">
         <h3 className="section_title">{title}</h3>
       </div>
-      <div class="case_item">
+      <div className="case_item">
         <div className="container">
-          <p class="case_name">{name}</p>
-          <p class="case_text">{text}</p>
+          <p className="case_name">{name}</p>
+          <p className="case_text">{text}</p>
         </div>
         <figure className="case_img">
           <img src={img} alt="" />

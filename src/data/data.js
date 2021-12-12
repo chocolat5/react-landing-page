@@ -39,7 +39,7 @@ export const config = {
     },
   ],
   hero: {
-    copy: 'We are a Landing Page',
+    copy: `We are \n a Landing Page`,
     text:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sed commodo nibh ante facilisis bibendum.',
     img: 'https://source.unsplash.com/tac7TY2ItGA/1200x800',
