@@ -23,12 +23,15 @@ export const Hero = ({ config }) => {
 
 const heroStyle = css`
   display: grid;
-  height: 600px;
+  height: 400px;
   overflow: hidden;
+
+  @media screen and (min-width: 600px) {
+    height: 100vh;
+  }
 
   .container {
     grid-area: 1 / -1;
-    text-align: center;
     margin: auto;
     z-index: 3;
   }
@@ -37,7 +40,7 @@ const heroStyle = css`
     grid-area: 1 / -1;
     z-index: 1;
     width: 100%;
-    height: 600px;
+    height: 100%;
     object-fit: cover;
   }
 
@@ -50,17 +53,18 @@ const heroStyle = css`
   }
 
   .copy {
-    font-size: 2rem;
-    font-weight: bold;
+    font-size: 3.2rem;
+    font-weight: 600;
     letter-spacing: 0.1em;
-    line-height: 1.1;
+    line-height: 1.6;
+    white-space: pre-line;
     @media screen and (min-width: 600px) {
       font-size: 5.6rem;
     }
   }
 
   .text {
-    margin: 0 auto;
+    margin: 12px 0 0;
     font-size: 1.3rem;
     letter-spacing: 0.05em;
     @media screen and (min-width: 600px) {
@@ -71,8 +75,8 @@ const heroStyle = css`
 
   .cta {
     display: block;
-    max-width: 240px;
-    margin: 20px auto 0;
+    width: 100%;
+    margin: 32px auto 0;
     padding: 8px;
     color: #fff;
     background-color: #000;
@@ -80,10 +84,14 @@ const heroStyle = css`
     font-weight: bold;
     letter-spacing: 0.1em;
     text-decoration: none;
+    text-align: center;
     &:hover {
       opacity: 0.7;
     }
     @media screen and (min-width: 900px) {
+      max-width: 240px;
+      margin-left: 0;
+      margin-right: 0;
       font-size: 1.6rem;
     }
   }

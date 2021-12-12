@@ -1,26 +1,33 @@
-import { useContext } from 'react'
+import React from 'react'
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react'
 
-import { FormContext } from './Form'
+import { useForm } from './Form'
 
-const FormInput = (props) => {
-  const { label, type = 'text', name } = props
-
-  const formContext = useContext(FormContext)
-  const { form, handleFormChange } = formContext
+const FormInput = ({ label, type = 'text', name, placeholder, required }) => {
+  const { formData, handleFormChange } = useForm()
 
   return (
     <div css={inputStyle}>
-      <label>{label}</label>
+      <label htmlFor={name}>{label}</label>
       {type == 'textarea' ? (
-        <textarea name={name} value={form[name]} onChange={handleFormChange} />
+        <textarea
+          id={name}
+          name={name}
+          value={formData[name.value]}
+          placeholder={placeholder}
+          onChange={handleFormChange}
+          required={required}
+        />
       ) : (
         <input
+          id={name}
           type={type}
           name={name}
-          value={form[name]}
+          value={formData[name.value]}
+          placeholder={placeholder}
           onChange={handleFormChange}
+          required={required}
         />
       )}
     </div>
