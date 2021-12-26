@@ -13,7 +13,7 @@ This is just a sample with React. I create this for learning React.
 
 ```
 git clone https://github.com/chocolat5/
-react-landing-page-template.git <PROJECT_NAME>
+react-landing-page.git <PROJECT_NAME>
 ```
 
 2. Move to the appropriate directory
