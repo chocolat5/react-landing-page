@@ -5,7 +5,7 @@ This is just a sample with React. I create this for learning React.
 
 ## Demo
 
-[View Demo](https://chocolat5.github.io/react-landing-page-template/)
+[View Demo](https://chocolat5.github.io/react-landing-page/)
 
 ## Getting Started
 
