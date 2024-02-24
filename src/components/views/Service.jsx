@@ -1,35 +1,6 @@
-import React from 'react'
-/** @jsx jsx */
-import { css, jsx } from '@emotion/react'
+import { css } from "@emotion/react";
 
-export const Service = ({ config }) => {
-  const { id, title, text, service } = config.service
-    ? config.service
-    : 'Loading'
-
-  return (
-    <section id={id} className="section" css={serviceStyle}>
-      <div className="container">
-        <h3 className="section_title">{title}</h3>
-        <p className="text">{text}</p>
-        <ul className="list">{service && <Item items={service} />}</ul>
-      </div>
-    </section>
-  )
-}
-
-const Item = ({ items }) => {
-  const listItem = items.map((item, i) => (
-    <li key={item.name} className="list_item">
-      <figure className="list_img">
-        <img src={item.img} alt="" />
-      </figure>
-      <p className="list_title">{item.name}</p>
-      <p className="list_text">{item.text}</p>
-    </li>
-  ))
-  return listItem
-}
+import config from "../../data/data";
 
 const serviceStyle = css`
   .container {
@@ -102,4 +73,33 @@ const serviceStyle = css`
       }
     }
   }
-`
+`;
+
+export default function Service() {
+  const { id, title, text, service } = config.service
+    ? config.service
+    : "Loading";
+
+  return (
+    <section id={id} className="section" css={serviceStyle}>
+      <div className="container">
+        <h3 className="section_title">{title}</h3>
+        <p className="text">{text}</p>
+        <ul className="list">{service && <Item items={service} />}</ul>
+      </div>
+    </section>
+  );
+}
+
+const Item = ({ items }) => {
+  const listItem = items.map((item) => (
+    <li key={item.name} className="list_item">
+      <figure className="list_img">
+        <img src={item.img} alt="" />
+      </figure>
+      <p className="list_title">{item.name}</p>
+      <p className="list_text">{item.text}</p>
+    </li>
+  ));
+  return listItem;
+};

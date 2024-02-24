@@ -1,32 +1,6 @@
-import React from 'react'
-/** @jsx jsx */
-import { css, jsx } from '@emotion/react'
+import { css } from "@emotion/react";
 
-export const Result = ({ config }) => {
-  const { id, title, text, items } = config.result ? config.result : 'Loading'
-
-  return (
-    <section id={id} className="section" css={resultStyle}>
-      <div className="container">
-        <h3 className="section_title">{title}</h3>
-        <p className="text">{text}</p>
-        <ul className="list">{items && <Item items={items} />}</ul>
-      </div>
-    </section>
-  )
-}
-
-const Item = ({ items }) => {
-  const listItem = items.map((item, i) => (
-    <li key={item + i} className="list_item">
-      <div className="inner">
-        <p className="list_num">{item.num}</p>
-        <p className="list_unit">{item.unit}</p>
-      </div>
-    </li>
-  ))
-  return listItem
-}
+import config from "../../data/data";
 
 const resultStyle = css`
   .text {
@@ -83,4 +57,31 @@ const resultStyle = css`
       }
     }
   }
-`
+`;
+
+export default function Result() {
+  const { id, title, text, items } = config.result ? config.result : "Loading";
+
+  return (
+    <section id={id} className="section" css={resultStyle}>
+      <div className="container">
+        <h3 className="section_title">{title}</h3>
+        <p className="text">{text}</p>
+        <ul className="list">{items && <Item items={items} />}</ul>
+      </div>
+    </section>
+  );
+}
+
+const Item = ({ items }) => {
+  const listItem = items.map((item, i) => (
+    // eslint-disable-next-line react/no-array-index-key
+    <li key={item + i} className="list_item">
+      <div className="inner">
+        <p className="list_num">{item.num}</p>
+        <p className="list_unit">{item.unit}</p>
+      </div>
+    </li>
+  ));
+  return listItem;
+};

@@ -1,7 +1,8 @@
 # react-landing-page-template
+
 This is just a sample with React. I create this for learning React.
 
-* The data can be modified by changing the data.js file
+- The data can be modified by changing the data.js file
 
 ## Demo
 
@@ -23,17 +24,18 @@ cd <PROJECT_NAME>
 ```
 
 3. Install npm package
+
 ```
 npm install --save-dev
 ```
 
 4. Run the project
+
 ```
 npm run start
 ```
 
 5. See http://localhost:8000/
-
 
 ## References
 

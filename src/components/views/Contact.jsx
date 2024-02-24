@@ -1,75 +1,9 @@
-import React from 'react'
-/** @jsx jsx */
-import { css, jsx } from '@emotion/react'
+import React from "react";
+import { css } from "@emotion/react";
 
-import Form, { useForm } from '../components/form/Form'
-import FormInput from '../components/form/FormInput'
-
-export const Contact = ({ config }) => {
-  const { id, title, text } = config.contact ? config.contact : 'Loading'
-  const { handleSubmit } = useForm()
-
-  return (
-    <section id={id} className="section" css={contactStyle}>
-      <div className="container">
-        <h3 className="section_title">{title}</h3>
-        <p className="text">{text}</p>
-        <Form
-          formInitialValues={{
-            firstName: {
-              value: '',
-              error: null,
-            },
-            lastName: {
-              value: '',
-              error: null,
-            },
-            email: {
-              value: '',
-              error: null,
-            },
-            message: {
-              value: '',
-              error: null,
-            },
-          }}
-        >
-          <form onSubmit={handleSubmit}>
-            <div className="fluid">
-              <FormInput
-                label="First Name"
-                name="firstName"
-                placeholder="Jane"
-                required={true}
-              />
-              <FormInput
-                label="Last Name"
-                name="lastName"
-                placeholder="Doe"
-                required={true}
-              />
-            </div>
-            <FormInput
-              label="E-mail"
-              type="email"
-              name="email"
-              placeholder="sample@sample.com"
-              required={true}
-            />
-            <FormInput
-              label="Message"
-              type="textarea"
-              name="message"
-              placeholder="Type your message"
-              required={true}
-            />
-            <input className="btn_submit" type="submit" value="Send Message" />
-          </form>
-        </Form>
-      </div>
-    </section>
-  )
-}
+import config from "../../data/data";
+import Form, { useForm } from "../form/Form";
+import FormInput from "../form/FormInput";
 
 const contactStyle = css`
   .section_title {
@@ -117,4 +51,70 @@ const contactStyle = css`
       font-size: 1.6rem;
     }
   }
-`
+`;
+
+export default function Contact() {
+  const { id, title, text } = config.contact ? config.contact : "Loading";
+  const { handleSubmit } = useForm();
+
+  return (
+    <section id={id} className="section" css={contactStyle}>
+      <div className="container">
+        <h3 className="section_title">{title}</h3>
+        <p className="text">{text}</p>
+        <Form
+          formInitialValues={{
+            firstName: {
+              value: "",
+              error: null,
+            },
+            lastName: {
+              value: "",
+              error: null,
+            },
+            email: {
+              value: "",
+              error: null,
+            },
+            message: {
+              value: "",
+              error: null,
+            },
+          }}
+        >
+          <form onSubmit={handleSubmit}>
+            <div className="fluid">
+              <FormInput
+                label="First Name"
+                name="firstName"
+                placeholder="Jane"
+                required
+              />
+              <FormInput
+                label="Last Name"
+                name="lastName"
+                placeholder="Doe"
+                required
+              />
+            </div>
+            <FormInput
+              label="E-mail"
+              type="email"
+              name="email"
+              placeholder="sample@sample.com"
+              required
+            />
+            <FormInput
+              label="Message"
+              type="textarea"
+              name="message"
+              placeholder="Type your message"
+              required
+            />
+            <input className="btn_submit" type="submit" value="Send Message" />
+          </form>
+        </Form>
+      </div>
+    </section>
+  );
+}

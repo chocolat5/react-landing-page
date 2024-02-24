@@ -1,40 +1,6 @@
-import React from 'react'
-/** @jsx jsx */
-import { css, jsx } from '@emotion/react'
+import { css } from "@emotion/react";
 
-export const About = ({ config }) => {
-  const { id, title, text, img, titleSub, why1, why2 } = config.about
-    ? config.about
-    : 'Loading'
-
-  return (
-    <section id={id} className="section" css={aboutStyle}>
-      <div className="container">
-        <div className="content">
-          <h3 className="section_title">{title}</h3>
-          <p className="text">{text}</p>
-          <h4 className="title_sub">{titleSub}</h4>
-          <div className="list_wrap">
-            <ul className="list">{why1 && <Why items={why1} />}</ul>
-            <ul className="list">{why2 && <Why items={why2} />}</ul>
-          </div>
-        </div>
-        <figure className="img">
-          <img src={img} alt="" />
-        </figure>
-      </div>
-    </section>
-  )
-}
-
-const Why = ({ items }) => {
-  const list = items.map((item, i) => (
-    <li key={item + i} className="item">
-      {item}
-    </li>
-  ))
-  return list
-}
+import config from "../../data/data";
 
 const aboutStyle = css`
   .container {
@@ -85,7 +51,7 @@ const aboutStyle = css`
       position: relative;
       padding-left: 1.5em;
       &:before {
-        content: '';
+        content: "";
         display: block;
         position: absolute;
         top: 0.5em;
@@ -105,4 +71,39 @@ const aboutStyle = css`
       }
     }
   }
-`
+`;
+
+export default function About() {
+  const { id, title, text, img, titleSub, why1, why2 } = config.about
+    ? config.about
+    : "Loading";
+
+  return (
+    <section id={id} className="section" css={aboutStyle}>
+      <div className="container">
+        <div className="content">
+          <h3 className="section_title">{title}</h3>
+          <p className="text">{text}</p>
+          <h4 className="title_sub">{titleSub}</h4>
+          <div className="list_wrap">
+            <ul className="list">{why1 && <Why items={why1} />}</ul>
+            <ul className="list">{why2 && <Why items={why2} />}</ul>
+          </div>
+        </div>
+        <figure className="img">
+          <img src={img} alt="" />
+        </figure>
+      </div>
+    </section>
+  );
+}
+
+const Why = ({ items }) => {
+  const list = items.map((item, i) => (
+    // eslint-disable-next-line react/no-array-index-key
+    <li key={item + i} className="item">
+      {item}
+    </li>
+  ));
+  return list;
+};

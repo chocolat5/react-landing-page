@@ -1,21 +1,6 @@
-import React from 'react'
-/** @jsx jsx */
-import { css, jsx } from '@emotion/react'
+import { css } from "@emotion/react";
 
-export const Features = ({ config }) => {
-  const { id, text, img } = config.features ? config.features : 'Loading'
-
-  return (
-    <section id={id} className="section" css={featuresStyle}>
-      <div className="container">
-        <p className="text">{text}</p>
-        <figure className="img">
-          <img src={img} alt="" />
-        </figure>
-      </div>
-    </section>
-  )
-}
+import config from "../../data/data";
 
 const featuresStyle = css`
   .container {
@@ -44,4 +29,19 @@ const featuresStyle = css`
       margin-top: 0;
     }
   }
-`
+`;
+
+export default function Features() {
+  const { id, text, img } = config.features ? config.features : "Loading";
+
+  return (
+    <section id={id} className="section" css={featuresStyle}>
+      <div className="container">
+        <p className="text">{text}</p>
+        <figure className="img">
+          <img src={img} alt="" />
+        </figure>
+      </div>
+    </section>
+  );
+}

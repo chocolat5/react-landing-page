@@ -1,46 +1,7 @@
-import React, { useState } from 'react'
-/** @jsx jsx */
-import { css, jsx } from '@emotion/react'
+import { useState } from "react";
+import { css } from "@emotion/react";
 
-export const Header = ({ config }) => {
-  const [isOpen, setIsOpen] = useState(false)
-  const handleClick = (e) => {
-    setIsOpen(!isOpen)
-  }
-
-  return (
-    <header css={headerStyle}>
-      <div className="container">
-        <h1 className="logo">
-          <a href="/react-landing-page-template/">
-            {config.sitename ? config.sitename : 'Loading'}
-          </a>
-        </h1>
-        <nav id="gnav" css={gnav} className={isOpen ? 'is-open' : ''}>
-          <ul>
-            {config.menus &&
-              config.menus.map((menu) => (
-                <li key={menu.title}>
-                  <a href={menu.path} onClick={handleClick}>
-                    {menu.title}
-                  </a>
-                </li>
-              ))}
-          </ul>
-        </nav>
-        <div id="hamburger" css={hamburger}>
-          <button
-            type="button"
-            className={isOpen ? 'icon is-active' : 'icon'}
-            onClick={handleClick}
-          >
-            <span></span>
-          </button>
-        </div>
-      </div>
-    </header>
-  )
-}
+import config from "../../data/data";
 
 const headerStyle = css`
   position: fixed;
@@ -69,7 +30,7 @@ const headerStyle = css`
       }
     }
   }
-`
+`;
 
 const gnav = css`
   a {
@@ -98,12 +59,15 @@ const gnav = css`
     z-index: 8000;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transition:
+      opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
       visibility 0s ease 0.4s;
     &.is-open {
       opacity: 1;
       visibility: visible;
-      transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s;
+      transition:
+        opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 0s;
     }
     ul {
       height: 100%;
@@ -125,7 +89,7 @@ const gnav = css`
       white-space: nowrap;
     }
   }
-`
+`;
 
 const hamburger = css`
   position: relative;
@@ -140,6 +104,7 @@ const hamburger = css`
   .icon {
     -webkit-appearance: none;
     -moz-appearance: none;
+    appearance: none;
     background: none;
     border: 0;
     position: absolute;
@@ -167,7 +132,7 @@ const hamburger = css`
         top: 50%;
         right: 0;
         left: 0;
-        content: '';
+        content: "";
         display: block;
         width: 18px;
         height: 2px;
@@ -200,4 +165,45 @@ const hamburger = css`
       }
     }
   }
-`
+`;
+
+export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <header css={headerStyle}>
+      <div className="container">
+        <h1 className="logo">
+          <a href="/react-landing-page-template/">
+            {config.sitename ? config.sitename : "Loading"}
+          </a>
+        </h1>
+        <nav id="gnav" css={gnav} className={isOpen ? "is-open" : ""}>
+          <ul>
+            {config.menus &&
+              config.menus.map((menu) => (
+                <li key={menu.title}>
+                  <a href={menu.path} onClick={handleClick}>
+                    {menu.title}
+                  </a>
+                </li>
+              ))}
+          </ul>
+        </nav>
+        <div id="hamburger" css={hamburger}>
+          <button
+            type="button"
+            className={isOpen ? "icon is-active" : "icon"}
+            onClick={handleClick}
+            aria-label="menu"
+          >
+            <span />
+          </button>
+        </div>
+      </div>
+    </header>
+  );
+}

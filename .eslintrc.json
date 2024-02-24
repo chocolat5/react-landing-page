@@ -2,36 +2,38 @@
   "env": {
     "browser": true,
     "es6": true,
-    "jest": true
+    "node": true
   },
-  "extends": [
-    "eslint:recommended",
-    "prettier",
-    "plugin:jsx-a11y/recommended",
-    "plugin:react/recommended"
-  ],
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
-  "parser": "babel-eslint",
+  "extends": ["airbnb", "plugin:react/recommended", "prettier"],
+  "overrides": [],
   "parserOptions": {
-    "ecmaVersion": 2018,
+    "ecmaVersion": "latest",
     "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
+    "extraFileExtensions": [".md", ".json"]
   },
-  "plugins": [
-    "react",
-    "jsx-a11y"
-  ],
+  "plugins": ["react", "react-hooks", "prettier", "import"],
   "rules": {
-    "semi": [2, "always"]
+    "semi": [2, "always"],
+    "react/prop-types": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/triple-slash-reference": "off",
+    "import/extensions": [
+      "error",
+      {
+        "js": "never",
+        "jsx": "never"
+      }
+    ],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "react/no-unknown-property": ["error", { "ignore": ["css"] }]
   },
   "settings": {
     "react": {
       "version": "detect"
     }
-  }
+  },
+  "ignorePatterns": ["vite.config.ts", "postcss.config.cjs"],
+  "root": true
 }

@@ -1,34 +1,6 @@
-import React from 'react'
-/** @jsx jsx */
-import { css, jsx } from '@emotion/react'
+import { css } from "@emotion/react";
 
-export const Testimonials = ({ config }) => {
-  const { id, title, items, text } = config.testimonials
-    ? config.testimonials
-    : 'Loading'
-
-  return (
-    <section id={id} className="section" css={testimonialsStyle}>
-      <div className="container">
-        <h3 className="section_title">{title}</h3>
-        <ul className="list">{items && <Item items={items} />}</ul>
-      </div>
-    </section>
-  )
-}
-
-const Item = ({ items }) => {
-  const listItem = items.map((item, i) => (
-    <li key={item + i} className="list_item">
-      <figure className="list_thumb">
-        <img src={item.img} alt={item.name} />
-      </figure>
-      <p className="list_text">{item.text}</p>
-      <p className="list_title">{item.name}</p>
-    </li>
-  ))
-  return listItem
-}
+import config from "../../data/data";
 
 const testimonialsStyle = css`
   .list {
@@ -78,4 +50,33 @@ const testimonialsStyle = css`
       }
     }
   }
-`
+`;
+
+export default function Testimonials() {
+  const { id, title, items } = config.testimonials
+    ? config.testimonials
+    : "Loading";
+
+  return (
+    <section id={id} className="section" css={testimonialsStyle}>
+      <div className="container">
+        <h3 className="section_title">{title}</h3>
+        <ul className="list">{items && <Item items={items} />}</ul>
+      </div>
+    </section>
+  );
+}
+
+const Item = ({ items }) => {
+  const listItem = items.map((item, i) => (
+    // eslint-disable-next-line react/no-array-index-key
+    <li key={item + i} className="list_item">
+      <figure className="list_thumb">
+        <img src={item.img} alt={item.name} />
+      </figure>
+      <p className="list_text">{item.text}</p>
+      <p className="list_title">{item.name}</p>
+    </li>
+  ));
+  return listItem;
+};

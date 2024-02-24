@@ -1,29 +1,6 @@
-import React from 'react'
-/** @jsx jsx */
-import { css, jsx } from '@emotion/react'
+import { css } from "@emotion/react";
 
-export const Case = ({ config }) => {
-  const { id, title, items, name, text, img } = config.case
-    ? config.case
-    : 'Loading'
-
-  return (
-    <section id={id} className="section" css={caseStyle}>
-      <div className="container">
-        <h3 className="section_title">{title}</h3>
-      </div>
-      <div className="case_item">
-        <div className="container">
-          <p className="case_name">{name}</p>
-          <p className="case_text">{text}</p>
-        </div>
-        <figure className="case_img">
-          <img src={img} alt="" />
-        </figure>
-      </div>
-    </section>
-  )
-}
+import config from "../../data/data";
 
 const caseStyle = css`
   .section_title {
@@ -83,4 +60,25 @@ const caseStyle = css`
       }
     }
   }
-`
+`;
+
+export default function Case() {
+  const { id, title, name, text, img } = config.case ? config.case : "Loading";
+
+  return (
+    <section id={id} className="section" css={caseStyle}>
+      <div className="container">
+        <h3 className="section_title">{title}</h3>
+      </div>
+      <div className="case_item">
+        <div className="container">
+          <p className="case_name">{name}</p>
+          <p className="case_text">{text}</p>
+        </div>
+        <figure className="case_img">
+          <img src={img} alt="" />
+        </figure>
+      </div>
+    </section>
+  );
+}

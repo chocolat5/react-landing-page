@@ -1,25 +1,6 @@
-import React from 'react'
-/** @jsx jsx */
-import { css, jsx } from '@emotion/react'
+import { css } from "@emotion/react";
 
-export const Hero = ({ config }) => {
-  const { copy, text, img, cta, url } = config.hero ? config.hero : 'Loading'
-
-  return (
-    <div css={heroStyle}>
-      <div className="container">
-        <p className="copy">{copy}</p>
-        <p className="text">{text}</p>
-        {cta && (
-          <a href={url} className="cta">
-            {cta}
-          </a>
-        )}
-      </div>
-      <img src={img} alt="" className="bg" />
-    </div>
-  )
-}
+import config from "../../data/data";
 
 const heroStyle = css`
   display: grid;
@@ -45,7 +26,7 @@ const heroStyle = css`
   }
 
   &:after {
-    content: '';
+    content: "";
     background-color: #fff;
     opacity: 0.6;
     grid-area: 1 / -1;
@@ -95,4 +76,23 @@ const heroStyle = css`
       font-size: 1.6rem;
     }
   }
-`
+`;
+
+export default function Hero() {
+  const { copy, text, img, cta, url } = config.hero ? config.hero : "Loading";
+
+  return (
+    <div css={heroStyle}>
+      <div className="container">
+        <p className="copy">{copy}</p>
+        <p className="text">{text}</p>
+        {cta && (
+          <a href={url} className="cta">
+            {cta}
+          </a>
+        )}
+      </div>
+      <img src={img} alt="" className="bg" />
+    </div>
+  );
+}
